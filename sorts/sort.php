@@ -59,8 +59,8 @@ function merge(&$a, $left, $right, $end) {
 function mergeSort(&$array) {
   $size = count($array);
   for($i = 1; $i < $size; $i *= 2) {
-    for($j = 0; $j < $size; $j += ($i << 2)) {
-      merge($array, $j, min($j + $i, $size), min($j + ($i << 2), $size));
+    for($j = 0; $j < $size; $j += ($i * 2)) {
+      merge(&$array, $j, min($j + $i, $size), min($j + ($i * 2), $size));
     }
   }
 }
@@ -118,5 +118,11 @@ function selectionSort(&$a) {
   }
 }
 
+$a = generateArray(10);
+selectionSort($a);
+foreach($a as $i) {
+  echo $i.' ';
+}
+echo "\n";
 
 ?>
